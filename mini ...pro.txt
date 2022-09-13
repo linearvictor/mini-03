@@ -1,0 +1,89 @@
+	
+	@Autowired
+	private UserMgmtRepo uMRepo;
+
+
+	public boolean saveUser(User user );	
+		User saved = uMRepo.save(user);
+		return saved.getPlanId() !=null;
+	}
+
+
+	public boolean activateUserAcc(ActivateAccount activeAcc){
+	Optional<User> findById = uMRepo.findById(userId);
+	if(findById.isPresent){
+		User user = findById.get();
+		user.setActiveSw(status);
+		uMRepo.save(user);
+		return true;
+		}
+	   return flase;
+	}
+
+
+	
+	public List<User> getAllUser() {
+		return uMRepo.findAll();
+ 	 }
+
+	public User getUserById(Integer userId){
+		Optional<User> findById = uMRepo.findById(userId);
+		if(findById.isPresent()){
+			
+  	}
+
+ 	}
+
+	public boolean deleteUserById(Integer userId){
+		boolean status = false;
+		try { 
+		  	uMRepo.deleteById(planId);
+			status = true;
+			} catch (Exception e){
+				e.printStackTrace();
+		}
+		retrn status; 	
+	}
+
+	public boolean changeAccountStatus(Integer userId, String accStatus){
+
+		Optional<User> findById = uMRepo.findById(userId);
+		if(findById.isPresent()){
+			User user = findById.get();
+			user.setActiveSw(status);
+			uMRepo.save(user);
+			return true;
+			}
+		  return false;
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
